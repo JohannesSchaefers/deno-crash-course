@@ -38,7 +38,7 @@ const people = [
 
 router
 .get('/', (ctx) => {
-  ctx.response.body = 'Hel-lo from our API! 🦕'
+  ctx.response.body = 'Hel+++lo from our API! 🦕'
 })
 .get('/people', (ctx) => {
   ctx.response.body = people;
