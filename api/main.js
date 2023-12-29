@@ -2,7 +2,7 @@
 // localhost:8000/people/   damit ruft man 
 // Format für den JSON-Body bei POST drücken, damit geklammert wird 
 // get für leia-organa:
-//  
+// 
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 
 const app = new Application();
@@ -38,7 +38,7 @@ const people = [
 
 router
 .get('/', (ctx) => {
-  ctx.response.body = 'Hello from our API! 🦕'
+  ctx.response.body = 'Hel-lo from our API! 🦕'
 })
 .get('/people', (ctx) => {
   ctx.response.body = people;
