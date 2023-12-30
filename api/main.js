@@ -54,6 +54,7 @@ router
 })
 
 .post('/people', async (ctx) => {
+  ctx.response.body = 'Hel???+-((+))-+??+lo from our POST API! 🦕'
   const { id, slug, name, homeWorld } = await ctx.request.body('json').value
   const person = {
     id,
@@ -69,6 +70,7 @@ router
 
     ctx.response.body = "Person not added 😭"
   }
+  ctx.response.body = 'Hel???+-((+))-+??+lo from our POST API! 🦕 unten'
 })
 
 app.use(router.routes());
