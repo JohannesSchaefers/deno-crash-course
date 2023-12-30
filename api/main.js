@@ -70,7 +70,7 @@ router
 
     ctx.response.body = "Person not added 😭"
   }
-  ctx.response.body = 'Hel???+-((+))-+??+lo from our POST API! 🦕 unten'
+  
 })
 
 app.use(router.routes());
