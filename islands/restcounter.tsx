@@ -1,8 +1,14 @@
 
 // programmed by ChatGPT
 
-import { h, FunctionalComponent } from 'preact';
-import { useEffect } from 'preact/hooks';
+//import { h, FunctionalComponent } from 'preact';
+//import { useEffect } from 'preact/hooks';
+
+// Importing Preact
+import { h, render, FunctionalComponent } from 'https://esm.sh/preact@10.19.3';
+
+import { useEffect } from 'https://esm.sh/preact@10.19.3/hooks';
+
 
 interface CounterProps {
   count: { value: number };
