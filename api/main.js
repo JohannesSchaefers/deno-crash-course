@@ -55,7 +55,7 @@ router
 })
 
 .post('/people', async (ctx) => {
-  ctx.response.body = 'Hel???+-((+))-+??+lo from our POST API! 🦕'
+  ctx.response.body = 'Hel???+-((+))-+??+lo from our POSTA API! 🦕'
   const { id, slug, name, homeWorld } = await ctx.request.body('json').value
   const person = {
     id,
