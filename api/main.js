@@ -3,6 +3,12 @@
 // Format für den JSON-Body bei POST drücken, damit geklammert wird 
 // get für leia-organa:
 // 
+
+// import { useSignal } from "@preact/signals";
+import Counter from "../islands/Counter1.tsx";
+import Counter1 from "../islands/Counter1.tsx";
+
+
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 
 const app = new Application();
