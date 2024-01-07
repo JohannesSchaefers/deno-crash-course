@@ -16,7 +16,7 @@ interface CounterProps {
 
 const Counter1: FunctionalComponent<CounterProps> = (props: CounterProps) => {
   // Assuming there's a variable named `valueToUpdate` that you want to watch for changes
-  let valueToUpdate = 5;
+  let valueToUpdate = 8;
 
   useEffect(() => {
     // Update props.count.value when the variable valueToUpdate changes
@@ -24,9 +24,7 @@ const Counter1: FunctionalComponent<CounterProps> = (props: CounterProps) => {
   }, [valueToUpdate]);
 
   return (
-    <div class="py-6">
-      <p class="text-3xl">{props.count.value}</p>
-    </div>
+    <h1>props.count.value</h1>
   );
 };
 
