@@ -5,6 +5,7 @@
 //import { useEffect } from 'preact/hooks';
 
 // Importing Preact
+
 import { h, render, FunctionalComponent } from 'https://esm.sh/preact@10.19.3';
 
 import { useEffect } from 'https://esm.sh/preact@10.19.3/hooks';
@@ -24,11 +25,8 @@ const Counter1: FunctionalComponent<CounterProps> = (props: CounterProps) => {
   }, [valueToUpdate]);
 
   return (
-    <h1>props.count.value</h1>
+    <p>props.count.value</p>
   );
 };
 
 export default Counter1;
-
-
-
