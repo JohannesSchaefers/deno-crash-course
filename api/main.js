@@ -39,11 +39,14 @@ const people = [
 
 router
 .get('/', (ctx) => {
-  ctx.response.body = 'Hel+lo from our RESTAPI! 🦕'
+  ctx.response.body = 'Hel-+-lo from our RESTAPI! 🦕'
 })
 .get('/people', (ctx) => {
   ctx.response.body = people;
 })
+
+// https://oakrest.deno.dev/people/han-solo so wird eine bestimmte Person gesucht
+
 .get('/people/:slug', (ctx) => {
   const {slug} = ctx.params;
   const person = people.find(( person) => person.slug === slug);
@@ -64,14 +67,23 @@ router
     homeWorld
   }
   
-  if(person) {
-    people.push(person)
+  if( person) {
+    people.push( person)
     ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug  // dieser Wert könnte als Balkenfütterer interpretiert werden
   } else {
 
     ctx.response.body = "Person not added 😭"
   }
-  
+  router
+  .get('/', (ctx) => {
+    ctx.response.body = 'Hel+lo from our RESTAPI!!! 🦕'
+    ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug  // dieser Wert könnte als Balkenfütterer interpretiert werden
+  })
+  .get('/people', (ctx) => {
+    ctx.response.body = people;
+  })
+
+
 })
 
 app.use(router.routes());
