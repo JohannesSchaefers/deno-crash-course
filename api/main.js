@@ -39,7 +39,7 @@ const people = [
 
 router
 .get('/', (ctx) => {
-  ctx.response.body = 'Hel-+-lo from our RESTAPI! 🦕'
+  ctx.response.body = 'Hel+lo from our RESTAPI! 🦕'
 })
 .get('/people', (ctx) => {
   ctx.response.body = people;
@@ -73,17 +73,7 @@ router
   } else {
 
     ctx.response.body = "Person not added 😭"
-  }
-  router
-  .get('/', (ctx) => {
-    ctx.response.body = 'Hel+lo from our RESTAPI!!! 🦕'
-    ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug  // dieser Wert könnte als Balkenfütterer interpretiert werden
-  })
-  .get('/people', (ctx) => {
-    ctx.response.body = people;
-  })
-
-
+  }  
 })
 
 app.use(router.routes());
