@@ -39,7 +39,7 @@ const people = [
 
 router
 .get('/', (ctx) => {
-  ctx.response.body = 'Hel+lo from our RESTAPI! 🦕'
+  ctx.response.body = 'Hello from our RESTAPI! 🦕'
 })
 .get('/people', (ctx) => {
   ctx.response.body = people;
@@ -76,8 +76,8 @@ router
   }  
 })
 
-app.use(router.routes());
-app.use(router.allowedMethods());
+app.use( router.routes());
+app.use( router.allowedMethods());
 
 app.addEventListener('listen', () => {
   console.log('App is running on http://localhost:8000');
