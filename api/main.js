@@ -70,7 +70,7 @@ router
   if( person) {
     people.push( person)
     ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug  // dieser Wert könnte als Balkenfütterer interpretiert werden
-    fetchWebpage(url);
+  //  fetchWebpage(url);
   } else {
 
     ctx.response.body = "Person not added 😭"
