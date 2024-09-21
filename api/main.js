@@ -33,7 +33,7 @@ async function fetchWebpage(url) {
 
 // Fetch and display the webpage
 const url = 'https://oakrest.deno.dev/people';  // Replace this with the URL you want to fetch
-//fetchWebpage(url);
+fetchWebpage(url);
 
 
 
