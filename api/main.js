@@ -4,6 +4,40 @@
 // get für leia-organa:
 // 
 
+
+
+
+
+
+// Function to fetch and display a webpage
+async function fetchWebpage(url) {
+  try {
+    // Fetch the webpage using Deno's native fetch API
+    const response = await fetch(url);
+
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error(`Failed to fetch: ${response.statusText}`);
+    }
+
+    // Get the webpage content as text
+    const htmlContent = await response.text();
+
+    // Output the fetched content to the console
+    console.log(htmlContent);
+  } catch (error) {
+    // Handle any errors that occur
+    console.error(`Error: ${error.message}`);
+  }
+}
+
+// Fetch and display the webpage
+const url = 'https://oakrest.deno.dev/people';  // Replace this with the URL you want to fetch
+//fetchWebpage(url);
+
+
+
+
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 
 const app = new Application();
@@ -89,29 +123,3 @@ app.use();
 await app.listen({port: 8000})
 
 
-
-// Function to fetch and display a webpage
-async function fetchWebpage(url) {
-  try {
-    // Fetch the webpage using Deno's native fetch API
-    const response = await fetch(url);
-
-    // Check if the request was successful
-    if (!response.ok) {
-      throw new Error(`Failed to fetch: ${response.statusText}`);
-    }
-
-    // Get the webpage content as text
-    const htmlContent = await response.text();
-
-    // Output the fetched content to the console
-    console.log(htmlContent);
-  } catch (error) {
-    // Handle any errors that occur
-    console.error(`Error: ${error.message}`);
-  }
-}
-
-// Fetch and display the webpage
-const url = 'https://iconicity.de';  // Replace this with the URL you want to fetch
-//fetchWebpage(url);
