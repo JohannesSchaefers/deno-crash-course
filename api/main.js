@@ -33,7 +33,7 @@ async function fetchWebpage(url) {
 
 // Fetch and display the webpage
 const url = 'https://oakrest.deno.dev/people';  // Replace this with the URL you want to fetch
-fetchWebpage(url);
+//fetchWebpage(url);
 
 
 
@@ -104,7 +104,7 @@ router
   if( person) {
     people.push( person)
     ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug  // dieser Wert könnte als Balkenfütterer interpretiert werden
-  //  fetchWebpage(url);
+    fetchWebpage(url);
   } else {
 
     ctx.response.body = "Person not added 😭"
