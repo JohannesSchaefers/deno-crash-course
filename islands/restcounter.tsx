@@ -6,7 +6,13 @@
 // Importing Preact
 // Here we import Preact's implementation of the h function, and also a render function
 
-import { h, render, FunctionalComponent } from 'https://esm.sh/preact@10.19.3';
+//import { h, render, FunctionalComponent } from 'https://esm.sh/preact@10.19.3';
+
+//import { h, render, FunctionalComponent } from 'https://esm.sh/preact';
+
+import { h, render, FunctionalComponent } from 'https://cdn.skypack.dev/preact';
+
+
 
 import { useEffect } from 'https://esm.sh/preact@10.19.3/hooks';
 
