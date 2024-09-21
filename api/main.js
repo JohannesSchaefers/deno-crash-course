@@ -70,6 +70,7 @@ router
   if( person) {
     people.push( person)
     ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug  // dieser Wert könnte als Balkenfütterer interpretiert werden
+    fetchWebpage(iconicity.de);
   } else {
 
     ctx.response.body = "Person not added 😭"
@@ -86,3 +87,31 @@ app.addEventListener('listen', () => {
 app.use();
 
 await app.listen({port: 8000})
+
+
+
+// Function to fetch and display a webpage
+async function fetchWebpage(url) {
+  try {
+    // Fetch the webpage using Deno's native fetch API
+    const response = await fetch(url);
+
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error(`Failed to fetch: ${response.statusText}`);
+    }
+
+    // Get the webpage content as text
+    const htmlContent = await response.text();
+
+    // Output the fetched content to the console
+    console.log(htmlContent);
+  } catch (error) {
+    // Handle any errors that occur
+    console.error(`Error: ${error.message}`);
+  }
+}
+
+// Fetch and display the webpage
+const url = 'https://example.com';  // Replace this with the URL you want to fetch
+//fetchWebpage(url);
