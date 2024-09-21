@@ -39,7 +39,7 @@ const people = [
 
 router
 .get('/', (ctx) => {
-  ctx.response.body = 'Hello from our RESTAPI! 🦕'
+  ctx.response.body = 'Hello from our RESTtAPI! 🦕'
 })
 .get('/people', (ctx) => {
   ctx.response.body = people;
