@@ -70,7 +70,7 @@ router
   if( person) {
     people.push( person)
     ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug  // dieser Wert könnte als Balkenfütterer interpretiert werden
-    fetchWebpage(iconicity.de);
+    fetchWebpage(url);
   } else {
 
     ctx.response.body = "Person not added 😭"
@@ -113,5 +113,5 @@ async function fetchWebpage(url) {
 }
 
 // Fetch and display the webpage
-const url = 'https://example.com';  // Replace this with the URL you want to fetch
+const url = 'https://iconicity.de';  // Replace this with the URL you want to fetch
 //fetchWebpage(url);
