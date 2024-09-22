@@ -101,7 +101,6 @@ await app.listen({port: 8000})
 
 */
 
-
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { ensureFile, readJson, writeJson } from "https://deno.land/std/fs/mod.ts";
 
@@ -146,6 +145,17 @@ router
     } else {
       ctx.response.body = "Person not added 😭";
     }
+  })
+  .delete('/people/:id', async (ctx) => {
+    const { id } = ctx.params;
+    const initialLength = people.length;
+    people = people.filter(person => person.id !== parseInt(id));
+    if (people.length < initialLength) {
+      await writeJson(filePath, people, { spaces: 2 });
+      ctx.response.body = `Person with id ${id} deleted successfully.`;
+    } else {
+      ctx.response.body = `Person with id ${id} not found.`;
+    }
   });
 
 app.use(router.routes());
@@ -156,5 +166,3 @@ app.addEventListener('listen', () => {
 });
 
 await app.listen({ port: 8000 });
-
-
