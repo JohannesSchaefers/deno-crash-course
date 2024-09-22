@@ -101,7 +101,8 @@ await app.listen({port: 8000})
 
 */
 
-import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+
+import { Application, Router, Context } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { ensureFile, readJson, writeJson } from "https://deno.land/std/fs/mod.ts";
 
 const app = new Application();
@@ -120,13 +121,13 @@ try {
 }
 
 router
-  .get('/', (ctx) => {
+  .get('/', (ctx: Context) => {
     ctx.response.body = 'Hello from our REST API! 🦕';
   })
-  .get('/people', (ctx) => {
+  .get('/people', (ctx: Context) => {
     ctx.response.body = people;
   })
-  .get('/people/:slug', (ctx) => {
+  .get('/people/:slug', (ctx: Context) => {
     const { slug } = ctx.params;
     const person = people.find((person) => person.slug === slug);
     if (person) {
@@ -135,7 +136,7 @@ router
       ctx.response.body = 'That person was not found 😭';
     }
   })
-  .post('/people', async (ctx) => {
+  .post('/people', async (ctx: Context) => {
     const { id, slug, name, homeWorld } = await ctx.request.body({ type: 'json' }).value;
     const person = { id, slug, name, homeWorld };
     if (person) {
@@ -146,8 +147,9 @@ router
       ctx.response.body = "Person not added 😭";
     }
   })
-  .delete('/people/:id', async (ctx) => {
+  .delete('/people/:id', async (ctx: Context) => {
     const { id } = ctx.params;
+    console.log(`Attempting to delete person with id: ${id}`);
     const initialLength = people.length;
     people = people.filter(person => person.id !== parseInt(id));
     if (people.length < initialLength) {
@@ -158,11 +160,22 @@ router
     }
   });
 
+app.use(async (ctx, next) => {
+  ctx.response.headers.set("Access-Control-Allow-Origin", "*");
+  ctx.response.headers.set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+  ctx.response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  if (ctx.request.method === "OPTIONS") {
+    ctx.response.status = 204;
+  } else {
+    await next();
+  }
+});
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.addEventListener('listen', () => {
-  console.log('App is running on http://localhost:8000');
+app.addEventListener('listen', ({ hostname, port, secure }) => {
+  console.log(`App is running on ${secure ? 'https://' : 'http://'}${hostname ?? 'localhost'}:${port}`);
 });
 
 await app.listen({ port: 8000 });
