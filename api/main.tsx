@@ -1,4 +1,4 @@
-/*
+
 
 
 
@@ -8,7 +8,7 @@
 // 
 
 
-function something () { return `Vogel`;}
+function something () { return `Vogelius`;}
 
 
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
@@ -98,8 +98,7 @@ app.use();
 
 await app.listen({port: 8000})
 
-
-*/
+/*
 
 
 import { Application, Router, Context } from "https://deno.land/x/oak@v11.1.0/mod.ts";
@@ -179,3 +178,4 @@ app.addEventListener('listen', ({ hostname, port, secure }) => {
 });
 
 await app.listen({ port: 8000 });
+*/
