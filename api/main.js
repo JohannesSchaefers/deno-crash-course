@@ -6,10 +6,10 @@ const router = new Router();
 const wss = new WebSocketServer(8080); // WebSocket server on port 8080
 
 const people = [
-  { id: 1, slug: 'luke-skywalker', name: 'Luke Skywalker', ahomeWorld: 'Tatooine' },
-  { id: 2, slug: 'leia-organa', name: 'Leia Organa', ahomeWorld: 'Alderaan' },
-  { id: 3, slug: 'han-solo', name: 'Han Solo', ahomeWorld: 'Corellia' },
-  { id: 4, slug: 'darth-vader', name: 'Darth Vader', ahomeWorld: 'Tatooine' }
+  { id: 1, slug: 'luke-skywalker', name: 'Luke Skywalker', homeWorld: 'Tatooine' },
+  { id: 2, slug: 'leia-organa', name: 'Leia Organa', homeWorld: 'Alderaan' },
+  { id: 3, slug: 'han-solo', name: 'Han Solo', homeWorld: 'Corellia' },
+  { id: 4, slug: 'darth-vader', name: 'Darth Vader', homeWorld: 'Tatooine' }
 ];
 
 router
@@ -51,4 +51,4 @@ app.addEventListener('listen', () => {
   console.log('App is running on http://www.mydomain.de:8000');
 });
 
-await app.listen({ port: 8000 });
+await app.listen({ port: 8000 }); // Ensure this is called only once
