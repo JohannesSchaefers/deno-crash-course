@@ -60,7 +60,6 @@ router
 })
 
 .post('/people', async (ctx) => {
-  ctx.response.body = 'Hel???+-((+))-+??+lo from our POSTAtA API! 🦕'
   const { id, slug, name, homeWorld } = await ctx.request.body('json').value
   const person = {
     id,
