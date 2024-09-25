@@ -70,6 +70,7 @@ router
   
   if( person) {
     people.push( person)
+    ctx.response.body = `Person added: ${JSON.stringify(person)} - ${something()}`;
     ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug + something() // dieser Wert könnte als Balkenfütterer interpretiert werden
     
     
