@@ -1,4 +1,6 @@
-function something () { return `Vogeliufs`;}
+function something() {
+  return `Vogeliufs`;
+}
 
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 
@@ -31,59 +33,53 @@ const people = [
     name: 'Darth Vader',
     homeWorld: 'Tatooine',
   }
-]
+];
 
 router
-.get('/', (ctx) => {
- ctx.response.body = 'Hello from our RESTtAPI! 🦕'
-})
-.get('/people', (ctx) => {
-  ctx.response.body = people;
-})
+  .get('/', (ctx) => {
+    ctx.response.body = 'Hello from our REST API! 🦕';
+  })
+  .get('/people', (ctx) => {
+    ctx.response.body = people;
+  })
+  .get('/people/:slug', (ctx) => {
+    const { slug } = ctx.params;
+    const person = people.find((person) => person.slug === slug);
+    if (person) {
+      ctx.response.body = person;
+    } else {
+      ctx.response.body = 'That person was not found 😭';
+    }
+  })
+  .post('/people', async (ctx) => {
+    const { id, slug, name, homeWorld } = await ctx.request.body({ type: 'json' }).value;
+    const person = {
+      id,
+      slug,
+      name,
+      homeWorld
+    };
 
-// https://oakrest.deno.dev/people/han-solo so wird eine bestimmte Person gesucht
+    if (person) {
+      people.push(person);
+      ctx.response.body = {
+        message: `Person added: ${JSON.stringify(person)} - ${something()}`,
+        person: person
+      };
+    } else {
+      ctx.response.body = { message: "Person not added 😭" };
+    }
+  });
 
-.get('/people/:slug', (ctx) => {
-  const {slug} = ctx.params;
-  const person = people.find(( person) => person.slug === slug);
-  if(person) {
-    ctx.response.body = person;
-  } else {
-    ctx.response.body = 'That person was not found 😭'
-  }
-})
-
-.post('/people', async (ctx) => {
-  const { id, slug, name, homeWorld } = await ctx.request.body('json').value
-  const person = {
-    id,
-    slug,
-    name,
-    homeWorld
-  }
-  
-  if( person) {
-    people.push( person)
-    ctx.response.body = `Person added: ${JSON.stringify(person)} - ${something()}`;
-  //  ctx.response.body = person.id +" -Melde, dass mir diese 2 Variablen vorliegen ;-) ;-)  "+ person.slug + something() // dieser Wert könnte als Balkenfütterer interpretiert werden
-    
-    
-  } else {
-
-    ctx.response.body = "Person not added 😭"
-  }  
-})
-
-app.use( router.routes());
-app.use( router.allowedMethods());
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 app.addEventListener('listen', () => {
   console.log('App is running on http://localhost:8000');
-})
+});
 
-app.use();
+await app.listen({ port: 8000 });
 
-await app.listen({port: 8000})
 /*
 
 // localhost:8000/people/   damit ruft man 
